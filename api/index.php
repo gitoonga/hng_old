@@ -1,7 +1,7 @@
 <?php
 $slackName = $_GET['slack_name'] ?? '';
 $track = $_GET['track'] ?? '';
-$indexfile = 'https://github.com/gitoonga/hng/api/index.php';
+$indexfile = 'https://github.com/gitoonga/hng/blob/main/api/index.php';
 $sourcecode = 'https://github.com/gitoonga/hng.git';
 
 
