@@ -18,11 +18,11 @@ function jsonResponse($slackName, $track, $indexfile, $sourcecode) {
     } else {
         $response = [
             'slack_name' => $slackName,
-            'day_of_week' => $dayOfWeek,
+            'current_day' => $dayOfWeek,
             'utc_time' => $utcTime,
             'track' => $track,
             'github_file_url' => $indexfile,
-            'github_source_url' => $sourcecode,
+            'github_repo_url' => $sourcecode,
             'status_code' => (int) 200,
         ];
     }
