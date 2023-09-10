@@ -1,13 +1,15 @@
 <?php
 $slackName = $_GET['slack_name'] ?? '';
 $track = $_GET['track'] ?? '';
-$indexfile = 'test_index';
-$sourcecode = 'test_source';
+$indexfile = 'https://github.com/gitoonga/hng/api/index.php';
+$sourcecode = 'https://github.com/gitoonga/hng';
 
 
 function jsonResponse($slackName, $track, $indexfile, $sourcecode) {
     $dayOfWeek = date("l");
-    $utcTime = date("c");
+    $tz = new DateTimeZone('UTC');
+    $currenttime = new DateTime('now', $tz);
+    $utcTime = $currenttime->format('Y-m-d\TH:i:s\Z');
 
     if ($utcTime === false) {
         $response = [
@@ -29,11 +31,10 @@ function jsonResponse($slackName, $track, $indexfile, $sourcecode) {
     echo json_encode($response);
 }
 
-// Check if all required parameters are provided
 if ($slackName && $track && $indexfile && $sourcecode) {
     jsonResponse($slackName, $track, $indexfile, $sourcecode);
 } else {
-    // Handle missing parameters
+    
     $response = [
         'error' => 'Missing required parameters',
     ];
